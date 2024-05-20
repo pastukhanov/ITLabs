@@ -1,0 +1,25 @@
+﻿<Window x:Class="Task3.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Task3"
+        mc:Ignorable="d"
+        Title="Aircraft Reflection App" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Margin="10">
+            <Button x:Name="LoadAssemblyButton" Content="ЗАГРУЗИТЬ ДЛЛ ФАЙЛ" Click="LoadAssemblyButton_Click" Margin="0,0,10,0" />
+            
+            <Button x:Name="ExecuteButton" Content="ВЫПОЛНИТЬ" Click="ExecuteButton_Click" Margin="0,0,10,0" />
+            <ComboBox x:Name="ClassComboBox" ItemsSource="{Binding ClassNames}" SelectedItem="{Binding SelectedClassName, Mode=TwoWay}" />
+        </StackPanel>
+        <ListBox x:Name="MethodListBox" Grid.Row="1" ItemsSource="{Binding MethodNames}" SelectedItem="{Binding SelectedMethodName, Mode=TwoWay}" SelectionChanged="MethodListBox_SelectionChanged" Margin="10" />
+        
+        <TextBox x:Name="ResultTextBox" Grid.Row="2" Text="{Binding Result}" SelectionChanged="ResultTextBox_OnSelectionChanged" VerticalAlignment="Top" Height="100" Margin="10" />
+    </Grid>
+</Window>

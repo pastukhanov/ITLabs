@@ -1,0 +1,19 @@
+﻿<Window x:Class="BankAccount.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Bank Account" Height="450" Width="800">
+    <Grid>
+        <StackPanel>
+            <TextBlock Text="{Binding BankAccount.BankName}" Margin="5"/>
+            <TextBlock Text="{Binding BankAccount.INN}" Margin="5"/>
+            <TextBlock Text="{Binding BankAccount.BIK}" Margin="5"/>
+            <TextBlock Text="{Binding BankAccount.CorrAccount}" Margin="5"/>
+            <TextBlock Text="{Binding BankAccount.Balance, StringFormat='Balance: {0:C}'}" Margin="5"/>
+            <TextBox Text="{Binding Amount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5"/>
+            <Button Content="Внести" Click="Deposit_Click" Margin="5"/>
+            <Button Content="Вывести" Click="Withdraw_Click" Margin="5"/>
+            <Button Content="Взять кредит" Click="TakeCredit_Click" Margin="5"/>
+            <Button Content="Погасить кредит" Click="RepayCredit_Click" Margin="5"/>
+        </StackPanel>
+    </Grid>
+</Window>
