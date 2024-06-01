@@ -1,0 +1,41 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:CandyFactory"
+             xmlns:viewModels="clr-namespace:CandyFactory.ViewModels"
+             x:Class="CandyFactory.MainPage">
+
+    <ContentPage.BindingContext>
+        <viewModels:FactoryViewModel />
+    </ContentPage.BindingContext>
+
+    <StackLayout Padding="10">
+        <HorizontalStackLayout
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            Padding="0"
+            Spacing="10">
+            <Button Text="Start" Command="{Binding StartCommand}" WidthRequest="100" IsEnabled="{Binding IsStartEnabled}" />
+            <Button Text="Stop" Command="{Binding StopCommand}" WidthRequest="100" IsEnabled="{Binding IsStopEnabled}" />
+            <Button Text="Add Sugar" Command="{Binding AddSugarCommand}" WidthRequest="100" IsEnabled="{Binding CanAddSugar}" />
+            <Button Text="Fix Factory" Command="{Binding FixFactoryCommand}" WidthRequest="100" IsEnabled="{Binding CanFixFactory}" />
+        </HorizontalStackLayout>
+
+        <Label Text="Factory State:" FontAttributes="Bold" Margin="0,10,0,0"/>
+        <Label Text="{Binding FactoryState}" Margin="0,0,0,10"/>
+
+        <Label Text="Loader State:" FontAttributes="Bold" Margin="0,10,0,0"/>
+        <Label Text="{Binding LoaderState}" Margin="0,0,0,10"/>
+
+        <Grid RowDefinitions="Auto, *" ColumnDefinitions="Auto, *">
+            <Label Grid.Row="0" Grid.Column="0" Text="Logs:" FontAttributes="Bold" Margin="0,10,0,0"/>
+            <ListView Grid.Row="0" Grid.Column="1" ItemsSource="{Binding Logs}" Margin="10,0,0,0" HeightRequest="500">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding .}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+    </StackLayout>
+
+</ContentPage>
